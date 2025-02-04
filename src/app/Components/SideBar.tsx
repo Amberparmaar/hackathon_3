@@ -12,13 +12,7 @@ export default function Sidebar() {
   const [showPriceFilter, setShowPriceFilter] = useState(true);
   const [showColorFilter, setShowColorFilter] = useState(true);
   const [showSizeFilter, setShowSizeFilter] = useState(true);
-
-interface PriceRange {
-    min: number;
-    max: number;
-}
-
-
+  
 const toggleSelection = (value: string, state: string[], setter: React.Dispatch<React.SetStateAction<string[]>>): void => {
     const isSelected = state.includes(value);
     if (isSelected) {
