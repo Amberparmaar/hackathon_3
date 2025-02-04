@@ -93,7 +93,7 @@ const Reviews = () => {
               }%)`,
             }}
           >
-            {reviews.map((review, index) => (
+            {reviews.map((review) => (
               <div
                 key={review.id}
                 className="w-full sm:w-1/3 p-4 flex-shrink-0"

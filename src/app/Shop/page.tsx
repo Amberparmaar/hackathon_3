@@ -7,6 +7,7 @@ import Contact from "../Components/Contact";
 import Footer from "../Components/Footer";
 import Link from "next/link";
 import Ratings from "../Components/Ratings";
+import Image from "next/image";
 
 
 
@@ -139,7 +140,7 @@ function Shop() {
         {/* Card 1 */}
         <div className="max-w-screen-2xl dark:bg-gray-800 hover:scale-105">
           <a href="#">
-            <img
+            <Image
               className="p-8"
               src="./Assets/polocontrast.png"
               alt="product image"
@@ -175,7 +176,7 @@ function Shop() {
         {/* Card 2 */}
         <div className="max-w-sm dark:bg-gray-800 rounded-lg hover:scale-105">
           <a href="#">
-            <img
+            <Image
               className="p-8 rounded-t-lg"
               src="./Assets/gradientTshirt.png"
               alt="product image"
@@ -202,7 +203,7 @@ function Shop() {
         {/* Card 3 */}
         <div className="max-w-sm  dark:bg-gray-800 rounded-lg hover:scale-105">
           <a href="#">
-            <img
+            <Image
               className="p-8 rounded-t-lg"
               src="./Assets/polotipping.png"
               alt="product image"
@@ -229,7 +230,7 @@ function Shop() {
         {/* Card 4 */}
         <div className="max-w-sm dark:bg-gray-800 rounded-lg hover:scale-105">
           <a href="#">
-            <img
+            <Image
               className="p-8 rounded-t-lg"
               src="./Assets/blackstripped.png"
               alt="product image"

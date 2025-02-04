@@ -8,7 +8,7 @@ interface AddToCartButtonProps {
   productName: string;
   productPrice: number;
   productImage: string;
-  productSize?: string; // Optional prop
+  productSize?: string | undefined; // Optional prop
   productColor?: string; // Optional prop
 }
 

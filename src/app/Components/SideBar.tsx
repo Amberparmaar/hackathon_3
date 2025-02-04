@@ -18,12 +18,6 @@ interface PriceRange {
     max: number;
 }
 
-interface Filters {
-    category: string;
-    priceRange: PriceRange;
-    colors: string[];
-    size: string;
-}
 
 const toggleSelection = (value: string, state: string[], setter: React.Dispatch<React.SetStateAction<string[]>>): void => {
     const isSelected = state.includes(value);

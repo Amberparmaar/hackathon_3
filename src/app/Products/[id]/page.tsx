@@ -27,7 +27,7 @@ export default function ProductDetails({ params }: Props) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [cartItems, setCartItems] = useState<{ id: string; name: string; price: number; image: string; quantity: number }[]>([]);
+  const [cartItems, setCartItems] = useState<{ id: string; name: string; price: number; image: string; quantity: number; sizes:string[]; colors:string[] }[]>([]);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -67,9 +67,11 @@ export default function ProductDetails({ params }: Props) {
           cartItem.id === product._id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
         );
       }
-      return [...prevItems, { id: product._id, name: product.name, price: product.price, image: product.imageUrl, quantity: 1 }];
+      return [...prevItems, { id: product._id, name: product.name, price: product.price, image: product.imageUrl, quantity: 1, sizes: product.sizes, colors:product.colors }];
     });
   };
+
+  
 
   if (!product) {
     return <div>Loading...</div>; // Loading state while fetching product

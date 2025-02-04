@@ -8,7 +8,7 @@ import Hamburger from "@/app/Components/Hambuger"; // Ensure this path is correc
 import { SignedIn, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen] = useState(false);
 
   return (
     <header>

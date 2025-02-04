@@ -7,8 +7,7 @@ import Image from "next/image";
 import Ratings from "@/app/Components/Ratings";
 import AddToCartButton from "../Components/AddToCartButton";
 import SideBar from "@/app/Components/SideBar";
-import product from "@/sanity/schemaTypes/product";
-import ProductDetails from "../Products/[id]/page";
+import product from "@/sanity/schemaTypes/product"
 
 const data = [
   {
@@ -148,7 +147,7 @@ function Casual() {
                 >
                   <Image
                     className="p-8 rounded-t-lg"
-                    src={product.imageUrl} // Updated path
+                    src={product.image} // Updated path
                     alt="product image"
                     width={350}
                     height={320}
@@ -176,6 +175,11 @@ function Casual() {
                       )}
                     </div>
                     <AddToCartButton
+                     productId={item._id}
+                     productName={item.name}
+                     productPrice={item.price}
+                     productImage={item.imageUrl}
+                     
                     
                     />
                   </div>

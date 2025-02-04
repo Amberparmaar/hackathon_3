@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider, SignedOut, SignInButton } from "@clerk/nextjs";
 import Navbar from "./Components/Navbar";
 import ToastProvider from "./Providers/page";
 import Footer from "./Components/Footer";
@@ -31,9 +24,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <Navbar />
-          <CartProvider>
-            {children}
-          </CartProvider>
+          <CartProvider>{children}</CartProvider>
           <ToastProvider />
           <Footer />
         </body>
