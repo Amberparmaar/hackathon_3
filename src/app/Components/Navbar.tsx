@@ -5,10 +5,11 @@ import { IoCartOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import Hamburger from "@/app/Components/Hambuger"; // Ensure this path is correct
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header>
       <div className="w-full h-10 bg-black flex justify-center items-center">
@@ -35,10 +36,13 @@ function Navbar() {
             <SignedIn>
               <UserButton /> {/* Shows user profile button when signed in */}
             </SignedIn>
+
             <div className="flex items-center space-x-4">
-              <h1 className="text-black text-xl md:text-2xl xl:text-3xl font-extrabold hover:scale-125">
-                SHOP.CO
-              </h1>
+              <Link href="http://localhost:3000">
+                <h1 className="text-black text-xl md:text-2xl xl:text-3xl font-extrabold hover:scale-125">
+                  SHOP.CO
+                </h1>
+              </Link>
             </div>
 
             {/* Navigation Links */}
@@ -67,12 +71,12 @@ function Navbar() {
                 </Link>
                 <select name="" id=""></select>
               </div>
-              <a
-                href="#"
+              <Link
+                href={"/AllProducts"}
                 className="block md:inline font-bold hover:scale-110 px-4 py-2 md:px-0"
               >
                 New Arrivals
-              </a>
+              </Link>
               <a
                 href="#"
                 className="block md:inline font-bold hover:scale-110  px-4 py-2 md:px-0"
@@ -116,9 +120,6 @@ function Navbar() {
               </div>
 
               <CgProfile className="hover:scale-125" />
-              <SignedOut>
-                <SignInButton /> {/* Shows sign-in button when signed out */}
-              </SignedOut>
             </div>
           </div>
         </div>

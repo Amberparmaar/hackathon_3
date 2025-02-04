@@ -3,7 +3,7 @@ import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Ratings from "@/app/Components/Ratings";
 import AddToCartButton from "@/app/Components/AddToCartButton";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Product {
   _id: string;

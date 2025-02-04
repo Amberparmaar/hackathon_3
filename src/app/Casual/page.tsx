@@ -3,9 +3,12 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Contact from "@/app/Components/Contact";
 import Footer from "../Components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import Ratings from "@/app/Components/Ratings";
 import AddToCartButton from "../Components/AddToCartButton";
 import SideBar from "@/app/Components/SideBar";
+import product from "@/sanity/schemaTypes/product";
+import ProductDetails from "../Products/[id]/page";
 
 const data = [
   {
@@ -14,63 +17,63 @@ const data = [
     oldPrice: 200,
     price: 145,
     discountPercent: 0,
-    imageUrl: "./Assets/gradientTshirt.png",
+    imageUrl: "/Assets/gradientTshirt.png", // Updated path
   },
   {
     _id: "2",
     name: "Polo With Tipping Details",
     price: 180,
     discountPercent: 0,
-    imageUrl: "./Assets/polotipping.png",
+    imageUrl: "/Assets/polotipping.png", // Updated path
   },
   {
     _id: "3",
     name: "Black Striped T-Shirt",
     price: 120,
     discountPercent: 30,
-    imageUrl: "./Assets/blackstripped.png",
+    imageUrl: "/Assets/blackstripped.png", // Updated path
   },
   {
     _id: "4",
     name: "SKINNY FIT JEANS",
     price: 240,
     discountPercent: 20,
-    imageUrl: "./Assets/pant1.png",
+    imageUrl: "/Assets/pant1.png", // Updated path
   },
   {
     _id: "5",
     name: "Checkered Shirt",
     price: 180,
     discountPercent: 0,
-    imageUrl: "./Assets/checkshirt.png",
+    imageUrl: "/Assets/checkshirt.png", // Updated path
   },
   {
     _id: "6",
     name: "Sleeve Striped T-Shirt",
     price: 130,
     discountPercent: 30,
-    imageUrl: "./Assets/orangrshirt.png",
+    imageUrl: "/Assets/orangrshirt.png", // Updated path
   },
   {
     _id: "7",
     name: "Vertical Striped Shirt",
     price: 212,
     discountPercent: 20,
-    imageUrl: "./Assets/greenshirt.png",
+    imageUrl: "/Assets/greenshirt.png", // Updated path
   },
   {
     _id: "8",
     name: "Courage Graphic T-Shirt",
     price: 145,
     discountPercent: 0,
-    imageUrl: "./Assets/tshirt.png",
+    imageUrl: "/Assets/tshirt.png", // Updated path
   },
   {
     _id: "9",
     name: "Loose Fit Bermuda Short",
     price: 80,
     discountPercent: 0,
-    imageUrl: "./Assets/shorts.png",
+    imageUrl: "/Assets/shorts.png", // Updated path
   },
 ];
 
@@ -100,9 +103,9 @@ function Casual() {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="m1 9 4-4-4-4"
                     />
                   </svg>
@@ -137,25 +140,23 @@ function Casual() {
           {/* cards */}
           <div className=" grid grid-cols-1 lg:grid-cols-3 grid-rows-3">
             {" "}
-            {data.map((item, index) => {
+            {data.map((item) => {
               return (
                 <div
                   key={item._id}
                   className="max-w-sm dark:bg-gray-800 rounded-lg hover:scale-90"
                 >
-                  <a href="#">
-                    <img
-                      className="p-8 rounded-t-lg"
-                      src={item.imageUrl}
-                      alt="product image"
-                      width={350}
-                      height={320}
-                    />
-                  </a>
+                  <Image
+                    className="p-8 rounded-t-lg"
+                    src={product.imageUrl} // Updated path
+                    alt="product image"
+                    width={350}
+                    height={320}
+                  />
                   <div className="px-5 pb-5">
                     <a href="#">
                       <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
-                        {item.name}
+                        {product.name}
                       </h5>
                     </a>
                     <div className="flex items-center mt-2.5 mb-2">
@@ -174,7 +175,9 @@ function Casual() {
                         </span>
                       )}
                     </div>
-                    <AddToCartButton />
+                    <AddToCartButton
+                    
+                    />
                   </div>
                 </div>
               );

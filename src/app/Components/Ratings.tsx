@@ -3,11 +3,11 @@ import { IoStarSharp } from "react-icons/io5";
 
 function Ratings() {
   const stars = [
-    <IoStarSharp />,
-    <IoStarSharp />,
-    <IoStarSharp />,
-    <IoStarSharp />,
-    <IoStarSharp />,
+    <IoStarSharp key={1} />,
+    <IoStarSharp key={2} />,
+    <IoStarSharp key={3} />,
+    <IoStarSharp key={4} />,
+    <IoStarSharp key={5} />,
   ];
   console.log(stars);
   return (

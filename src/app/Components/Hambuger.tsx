@@ -6,7 +6,7 @@ function Hamburger() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev); // Toggle the menu open/close state
   };
 
   return (
@@ -44,9 +44,7 @@ function Hamburger() {
       {/* Menu */}
       <div
         className={`absolute top-12 left-0 w-48 bg-white border rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out ${
-          isOpen
-            ? "scale-100 opacity-100"
-            : "scale-95 opacity-0 pointer-events-none"
+          isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
         }`}
       >
         <ul className="space-y-1 p-2">
@@ -59,7 +57,7 @@ function Hamburger() {
             </Link>
           </li>
           <li>
-          <Link
+            <Link
               href="/Shop"
               className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
             >
@@ -67,7 +65,7 @@ function Hamburger() {
             </Link>
           </li>
           <li>
-          <Link
+            <Link
               href="/Casual"
               className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
             >
@@ -75,7 +73,7 @@ function Hamburger() {
             </Link>
           </li>
           <li>
-          <Link
+            <Link
               href="/AllProducts"
               className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
             >

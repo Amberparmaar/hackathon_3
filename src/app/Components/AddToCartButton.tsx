@@ -1,34 +1,48 @@
 "use client";
 import React from "react";
 import { toast } from "react-toastify";
+import { useCart } from "@/app/Context/CartContext";
 
-function AddToCartButton() {
+interface AddToCartButtonProps {
+  productId: string;
+  productName: string;
+  productPrice: number;
+  productImage: string;
+  productSize?: string; // Optional prop
+  productColor?: string; // Optional prop
+}
+
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({
+  productId,
+  productName,
+  productPrice,
+  productImage,
+  productSize,
+  productColor,
+}) => {
+  const { addToCart } = useCart();
+
   const handleAddToCart = () => {
-    toast.success("Item added to cart successfully!", {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
+    addToCart({
+      id: productId,
+      name: productName,
+      price: productPrice,
+      image: productImage,
+      sizes: productSize,
+      colors: productColor,
     });
+    toast.success(`${productName} has been added to your cart!`);
   };
 
   return (
-    <div className="mt-4 flex justify-center">
-      <button
-        type="button"
-        onClick={handleAddToCart}
-        className="text-white bg-[#050708] font-medium rounded-full 
-          text-sm md:text-base lg:text-lg px-10 md:px-16 lg:px-20 
-          py-2 lg:py-2 text-center inline-flex items-center 
-          hover:bg-[#1a1a1a] transition-all duration-300 ease-in-out"
-      >
-        Add to Cart
-      </button>
-    </div>
+    <button
+      type="button"
+      className="bg-black text-white font-medium rounded-full text-sm md:text-base px-10 py-2 md:py-3 w-full md:w-auto"
+      onClick={handleAddToCart}
+    >
+      Add to Cart
+    </button>
   );
-}
+};
 
 export default AddToCartButton;

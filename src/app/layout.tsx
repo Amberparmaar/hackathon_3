@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import {
+  ClerkProvider,
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
 import Navbar from "./Components/Navbar";
 import ToastProvider from "./Providers/page";
 import Footer from "./Components/Footer";
 import { Inter } from "next/font/google";
+import { CartProvider } from "@/app/Context/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,17 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-
-    <html lang="en">
-      <body className={inter.className}>
-        
+      <html lang="en">
+        <body className={inter.className}>
           <Navbar />
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
           <ToastProvider />
           <Footer />
-       
-      </body>
-    </html>
+        </body>
+      </html>
+      <SignedOut>
+        <SignInButton /> {/* Shows sign-in button when signed out */}
+      </SignedOut>
     </ClerkProvider>
   );
 }
