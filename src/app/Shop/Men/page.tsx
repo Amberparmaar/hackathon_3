@@ -1,5 +1,3 @@
-import AddToCartButton from "@/app/Components/AddToCartButton";
-
 import Ratings from "@/app/Components/Ratings";
 import Image from "next/image";
 import { CiCircleCheck } from "react-icons/ci";
@@ -117,8 +115,6 @@ export default function Men() {
           >
             - 1 +
           </button>
-          
-          <AddToCartButton />
         </div>
       </div>
     </div>

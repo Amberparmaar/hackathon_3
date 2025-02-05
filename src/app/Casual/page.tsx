@@ -147,7 +147,7 @@ function Casual() {
                 >
                   <Image
                     className="p-8 rounded-t-lg"
-                    src={product.image} // Updated path
+                    src={item.imageUrl} // Updated path
                     alt="product image"
                     width={350}
                     height={320}

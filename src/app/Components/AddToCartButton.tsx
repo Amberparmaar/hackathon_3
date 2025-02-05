@@ -8,8 +8,8 @@ interface AddToCartButtonProps {
   productName: string;
   productPrice: number;
   productImage: string;
-  productSize?: string | undefined; // Optional prop
-  productColor?: string; // Optional prop
+  productSize?: string;
+  productColor?: string;
 }
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({
@@ -23,26 +23,36 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
+    if (!addToCart) {
+      console.error("Cart context is not available.");
+      return;
+    }
+
     addToCart({
       id: productId,
       name: productName,
       price: productPrice,
       image: productImage,
-      sizes: productSize,
-      colors: productColor,
+      size: productSize || "N/A", // Avoid undefined
+      color: productColor || "N/A", // Avoid undefined
+      quantity: 1, // Ensure quantity is set
     });
+
     toast.success(`${productName} has been added to your cart!`);
   };
 
   return (
-    <button
-      type="button"
-      className="bg-black text-white font-medium rounded-full text-sm md:text-base px-10 py-2 md:py-3 w-full md:w-auto"
-      onClick={handleAddToCart}
-    >
-      Add to Cart
-    </button>
+    <div className="text-center">
+      <button
+        type="button"
+        className="bg-black text-white font-medium rounded-full text-sm md:text-base px-14 py-2 md:py-3 w-full md:w-auto mt-6"
+        onClick={handleAddToCart}
+      >
+        Add to Cart
+      </button>
+    </div>
   );
 };
 
 export default AddToCartButton;
+

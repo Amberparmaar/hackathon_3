@@ -14,6 +14,8 @@ interface Product {
   oldPrice: number;
   discountPercent: number;
   imageUrl: string;
+  sizes: string;
+  colors: string;
 }
 
 export default async function AllProducts() {
@@ -67,7 +69,14 @@ export default async function AllProducts() {
             </div>
 
             <div className="mt-4">
-              <AddToCartButton />
+              <AddToCartButton
+                productId={product._id}
+                productName={product.name}
+                productPrice={product.price}
+                productImage={product.imageUrl}
+                productSize={product.sizes}
+                productColor={product.colors}
+              />
             </div>
           </div>
         ))}

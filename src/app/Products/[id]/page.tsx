@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Ratings from "@/app/Components/Ratings";
@@ -27,10 +27,10 @@ export default function ProductDetails({ params }: Props) {
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [cartItems, setCartItems] = useState<{ id: string; name: string; price: number; image: string; quantity: number; sizes:string[]; colors:string[] }[]>([]);
 
-  useEffect(() => {
-    const fetchProduct = async () => {
+  // Function to fetch product details
+  const fetchProduct = async (id: string) => {
+    try {
       const fetchedProduct = await client.fetch<Product>(
         `*[_type == "products" && _id == $id][0] {
           _id,
@@ -43,35 +43,38 @@ export default function ProductDetails({ params }: Props) {
           colors,
           sizes
         }`,
-        { id: params.id }
+        { id }
       );
-      setProduct(fetchedProduct);
-      if (fetchedProduct?.sizes?.length) {
-        setSelectedSize(fetchedProduct.sizes[0]); // Default to first size
-      }
-      if (fetchedProduct?.colors?.length) {
-        setSelectedColor(fetchedProduct.colors[0]); // Default to first color
-      }
-    };
 
-    fetchProduct();
-  }, [params.id]);
-
-  const handleAddToCart = () => {
-    if (!product) return;
-
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((cartItem) => cartItem.id === product._id);
-      if (existingItem) {
-        return prevItems.map((cartItem) =>
-          cartItem.id === product._id ? { ...cartItem, quantity: cartItem.quantity + 1 } : cartItem
-        );
+      if (fetchedProduct) {
+        setProduct(fetchedProduct);
+        setSelectedSize(fetchedProduct.sizes?.[0] || null); // Default to first size if available
+        setSelectedColor(fetchedProduct.colors?.[0] || null); // Default to first color if available
+      } else {
+        console.error("Product not found");
       }
-      return [...prevItems, { id: product._id, name: product.name, price: product.price, image: product.imageUrl, quantity: 1, sizes: product.sizes, colors:product.colors }];
-    });
+    } catch (error) {
+      console.error("Error fetching product:", error);
+    }
   };
 
-  
+  useEffect(() => {
+    fetchProduct(params.id);
+  }, [params.id]);
+
+  // const handleAddToCart = () => {
+  //   if (!product || !selectedSize || !selectedColor) return;
+
+  //   // Cart logic should ideally use global state (Redux, Context API)
+  //   console.log("Added to cart:", {
+  //     id: product._id,
+  //     name: product.name,
+  //     price: product.price,
+  //     image: product.imageUrl,
+  //     size: selectedSize,
+  //     color: selectedColor,
+  //   });
+  // };
 
   if (!product) {
     return <div>Loading...</div>; // Loading state while fetching product
@@ -98,7 +101,7 @@ export default function ProductDetails({ params }: Props) {
         <h2 className="sm:text-2xl md:text-3xl lg:text-3xl font-extrabold text-black leading-2">
           {product.name}
         </h2>
-        
+
         <Ratings />
 
         <div className="text-2xl font-bold text-black">
@@ -123,7 +126,9 @@ export default function ProductDetails({ params }: Props) {
                 <button
                   key={size}
                   className={`px-4 py-2 border rounded-md ${
-                    selectedSize === size ? "bg-black text-white" : "border-gray-300"
+                    selectedSize === size
+                      ? "bg-black text-white"
+                      : "border-gray-300"
                   }`}
                   onClick={() => setSelectedSize(size)}
                 >
@@ -154,12 +159,11 @@ export default function ProductDetails({ params }: Props) {
         )}
 
         {/* Add to Cart Button */}
-        <AddToCartButton 
-           productId={product._id} 
-           productName={product.name} 
-           productPrice={product.price} 
-           productImage={product.imageUrl} 
-           onAddToCart={handleAddToCart} 
+        <AddToCartButton
+          productId={product._id}
+          productName={product.name}
+          productPrice={product.price}
+          productImage={product.imageUrl}
         />
       </div>
     </div>
