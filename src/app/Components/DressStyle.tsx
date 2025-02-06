@@ -1,6 +1,13 @@
 import React from "react";
 import Image from "next/image";
 
+const dressStyles = [
+  { src: "/assets/casual.png", alt: "Casual Dress Style" },
+  { src: "/assets/formal.png", alt: "Formal Dress Style" },
+  { src: "/assets/party.png", alt: "Party Dress Style" },
+  { src: "/assets/gym.png", alt: "Gym Dress Style" },
+];
+
 function DressStyle() {
   return (
     <div className="bg-[#F0F0F0] flex flex-col rounded-2xl mt-8 mx-4 md:mx-8 lg:mx-12 xl:mx-20">
@@ -8,51 +15,23 @@ function DressStyle() {
         BROWSE BY DRESS STYLE
       </h2>
 
-      {/* First Row of Images */}
-      <div className="flex flex-col sm:flex-row sm:space-x-10 sm:space-y-0 space-y-6 sm:mt-10">
-        <div className="flex justify-center sm:w-1/2">
-          <Image
-            className="cursor-pointer hover:scale-110 rounded-lg"
-            src="/assets/casual.png"
-            alt="Casual Dress Style"
-            height={300}
-            width={400}
-          />
-        </div>
-        <div className="flex justify-center sm:w-1/2">
-          <Image
-            className="cursor-pointer hover:scale-110 rounded-lg"
-            src="/assets/formal.png"
-            alt="Formal Dress Style"
-            height={300}
-            width={400}
-          />
-        </div>
-      </div>
-
-      {/* Second Row of Images */}
-      <div className="flex flex-col sm:flex-row mt-8 mb-8 space-y-6 sm:space-y-0 sm:space-x-10 sm:mt-10">
-        <div className="flex justify-center sm:w-1/2">
-          <Image
-            className="cursor-pointer hover:scale-110 rounded-lg"
-            src="/assets/party.png"
-            alt="Party Dress Style"
-            height={300}
-            width={400}
-          />
-        </div>
-        <div className="flex justify-center sm:w-1/2">
-          <Image
-            className="cursor-pointer hover:scale-110 rounded-lg"
-            src="/assets/gym.png"
-            alt="Gym Dress Style"
-            height={300}
-            width={400}
-          />
-        </div>
+      {/* Images Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-10 mt-8 mb-8">
+        {dressStyles.map((style, index) => (
+          <div key={index} className="flex justify-center">
+            <Image
+              className="cursor-pointer hover:scale-110 rounded-lg"
+              src={style.src}
+              alt={style.alt}
+              height={300}
+              width={400}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 export default DressStyle;
+

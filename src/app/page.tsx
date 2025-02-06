@@ -12,7 +12,6 @@ export default function App() {
       <Hero />
       <NewArrivals />
       <TopSellings />
-
       <DressStyle />
       <Reviews />
       <Contact />

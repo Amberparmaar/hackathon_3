@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import Image from "next/image";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -12,7 +11,10 @@ import { useCart } from "@/app/Context/CartContext";
 const Cart = () => {
   const { cartItems, removeFromCart, addToCart } = useCart();
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
   const discount = subtotal * 0.2;
   const deliveryFee = 15;
   const total = subtotal - discount + deliveryFee;
@@ -84,13 +86,22 @@ const Cart = () => {
                   <div className="w-full md:w-3/4">
                     <h4 className="flex justify-between items-center font-semibold mt-2 text-base md:text-lg">
                       {product.name}
-                      <span className="text-red-400 cursor-pointer" onClick={() => removeFromCart(product.id)}>
+                      <span
+                        className="text-red-400 cursor-pointer"
+                        onClick={() => removeFromCart(product.id)}
+                      >
                         <RiDeleteBinLine />
                       </span>
                     </h4>
-                    <p className="mt-2 text-sm text-gray-400">Size: {product.size || "N/A"}</p>
-                    <p className="text-sm text-gray-400">Color: {product.color || "N/A"}</p>
-                    <h4 className="font-semibold mt-4 text-base md:text-lg">${product.price * product.quantity}</h4>
+                    <p className="mt-2 text-sm text-gray-400">
+                      Size: {product.size || "N/A"}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      Color: {product.color || "N/A"}
+                    </p>
+                    <h4 className="font-semibold mt-4 text-base md:text-lg">
+                      ${product.price * product.quantity}
+                    </h4>
                     <div className="flex justify-end">
                       <button
                         type="button"
@@ -103,7 +114,7 @@ const Cart = () => {
                       <button
                         type="button"
                         className="text-black bg-[#F0F0F0] py-2 px-6 md:px-10 font-medium rounded-full text-sm md:text-base mb-2"
-                        onClick={() => handleQuantityChange(product.id, 1)}
+                        onClick={() => handleQuantityChange(product.id, +1)}
                       >
                         +
                       </button>
@@ -130,6 +141,7 @@ const Cart = () => {
             </Link>
           </div>
         </div>
+        
       </div>
 
       <Contact />

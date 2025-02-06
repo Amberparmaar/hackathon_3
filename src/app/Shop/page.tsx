@@ -134,25 +134,25 @@ function Shop() {
           YOU MIGHT ALSO LIKE
         </h3>
       </div>
-      {/* shop product cards */}
+      
       {/* div container */}
       <div className="space-x-6 justify-center flex flex-col md:flex-row sm:flex-col">
         {/* Card 1 */}
         <div className="max-w-screen-2xl dark:bg-gray-800 hover:scale-105">
-          <a href="#">
+          
             <Image
               className="p-8"
               src="./Assets/polocontrast.png"
               alt="product image"
             />
-          </a>
+          
 
           <div className="px-5 pb-5">
-            <a href="#">
+            
               <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
                 Polo With Contrast Trims
               </h5>
-            </a>
+          
             <div className="flex items-center mt-2.5 mb-5">
               {/* Ratings */}
 
@@ -175,19 +175,19 @@ function Shop() {
         </div>
         {/* Card 2 */}
         <div className="max-w-sm dark:bg-gray-800 rounded-lg hover:scale-105">
-          <a href="#">
+          
             <Image
               className="p-8 rounded-t-lg"
               src="./Assets/gradientTshirt.png"
               alt="product image"
             />
-          </a>
+        
           <div className="px-5 pb-5">
-            <a href="#">
+            
               <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
                 Gradient Graphic T-Shirt
               </h5>
-            </a>
+            
             <div className="flex items-center mt-2.5 mb-5">
               {/* Ratings */}
 
@@ -202,19 +202,19 @@ function Shop() {
         </div>
         {/* Card 3 */}
         <div className="max-w-sm  dark:bg-gray-800 rounded-lg hover:scale-105">
-          <a href="#">
+          
             <Image
               className="p-8 rounded-t-lg"
               src="./Assets/polotipping.png"
               alt="product image"
             />
-          </a>
+          
           <div className="px-5 pb-5">
-            <a href="#">
+            
               <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
                 Polo With Tipping Details
               </h5>
-            </a>
+            
             <div className="flex items-center mt-2.5 mb-5">
               {/* Ratings */}
 
@@ -229,19 +229,19 @@ function Shop() {
         </div>
         {/* Card 4 */}
         <div className="max-w-sm dark:bg-gray-800 rounded-lg hover:scale-105">
-          <a href="#">
+          
             <Image
               className="p-8 rounded-t-lg"
               src="./Assets/blackstripped.png"
               alt="product image"
             />
-          </a>
+        
           <div className="px-5 pb-5 ">
-            <a href="#">
+            
               <h5 className="text-md font-semibold tracking-tight text-gray-900 dark:text-white">
                 Black Stripped T-Shirt
               </h5>
-            </a>
+            
             <div className="flex items-center mt-2.5 mb-5">
               {/* Ratings */}
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ClerkProvider, SignedOut, SignInButton } from "@clerk/nextjs";
+import { ClerkProvider} from "@clerk/nextjs";
 import Navbar from "./Components/Navbar";
 import ToastProvider from "./Providers/page";
 import Footer from "./Components/Footer";
@@ -29,9 +29,7 @@ export default function RootLayout({
           <Footer />
         </body>
       </html>
-      <SignedOut>
-        <SignInButton /> {/* Shows sign-in button when signed out */}
-      </SignedOut>
+     
     </ClerkProvider>
   );
 }

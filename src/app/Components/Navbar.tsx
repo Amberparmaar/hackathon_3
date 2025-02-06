@@ -5,7 +5,7 @@ import { IoCartOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import Link from "next/link";
 import Hamburger from "@/app/Components/Hambuger"; // Ensure this path is correct
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 function Navbar() {
   const [menuOpen] = useState(false);
@@ -120,6 +120,9 @@ function Navbar() {
               </div>
 
               <CgProfile className="hover:scale-125" />
+              <SignedOut>
+        <SignInButton /> {/* Shows sign-in button when signed out */}
+      </SignedOut>
             </div>
           </div>
         </div>

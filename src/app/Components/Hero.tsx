@@ -10,8 +10,8 @@ function Hero() {
         className="absolute inset-0 object-cover w-full h-full"
         src="/Assets/heropic.png"
         alt="Fashion Image"
-        layout="fill"
-        priority
+        width={500}
+        height={300}
       />
 
       {/* Overlay */}
@@ -38,15 +38,21 @@ function Hero() {
             {/* Stats Section */}
             <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">200+</h2>
+                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">
+                  200+
+                </h2>
                 <p className="font-bold">International Brands</p>
               </div>
               <div>
-                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">2,000+</h2>
+                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">
+                  2,000+
+                </h2>
                 <p className="font-bold">High-Quality Products</p>
               </div>
               <div>
-                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">30,000+</h2>
+                <h2 className="text-2xl font-bold transition-transform duration-300 hover:scale-105">
+                  30,000+
+                </h2>
                 <p className="font-bold">Happy Customers</p>
               </div>
             </div>
@@ -58,4 +64,3 @@ function Hero() {
 }
 
 export default Hero;
-
